@@ -1,6 +1,6 @@
 {
-  "name": "ember-api-actions",
-  "version": "0.0.0-development",
+  "name": "@1024pix/ember-api-actions",
+  "version": "1.0.0",
   "description": "Trigger remote actions that don't fit into CRUD, in your Ember.js apps",
   "keywords": [
     "ember-addon",
@@ -96,8 +96,7 @@
   "release": {
     "extends": "@mike-north/js-lib-semantic-release-config"
   },
-  "volta": {
-    "node": "12.22.2",
-    "yarn": "1.22.10"
+  "engine": {
+    "node": "20.13.1"
   }
 }
