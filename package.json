@@ -20,6 +20,7 @@
   },
   "scripts": {
     "build": "ember build",
+    "lint": "npm run lint:ts && npm run lint:hbs",
     "lint:ts": "tslint --project .",
     "lint:hbs": "ember-template-lint .",
     "start": "ember server",
