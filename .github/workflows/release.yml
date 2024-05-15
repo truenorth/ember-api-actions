@@ -1,0 +1,32 @@
+name: release
+
+on:
+  push:
+    branches:
+      - dev
+  repository_dispatch:
+    types: [ 'deploy' ]
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: 'package.json'
+
+      - run: npm ci
+      - run: npm run build
+
+      - uses: 1024pix/pix-actions/release@main
+        id: semantic
+        with:
+          npmPublish: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.PIX_SERVICE_ACTIONS_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_PUBLISH_ACCESS_TOKEN }}

@@ -10,10 +10,10 @@
     "ajax",
     "model"
   ],
-  "homepage": "https://github.com/mike-north/ember-api-actions",
-  "repository": "https://github.com/mike-north/ember-api-actions.git",
+  "homepage": "https://github.com/1024pix/ember-api-actions",
+  "repository": "https://github.com/1024pix/ember-api-actions.git",
   "license": "MIT",
-  "author": "Mike North <michael.l.north@gmail.com> (https://mike.works)",
+  "author": "Mike North <michael.l.north@gmail.com> (https://mike.works), 1024pix team",
   "directories": {
     "doc": "doc",
     "test": "tests"
