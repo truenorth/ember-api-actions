@@ -1,18 +1,14 @@
-import { TestContext } from '@ember/test-helpers';
 import Pretender from 'pretender';
 
-export default function setupPretender(hooks: NestedHooks) {
-  hooks.beforeEach(function(this: TestContext) {
+// @ts-ignore
+export default function setupPretender(hooks) {
+  // @ts-ignore
+  hooks.beforeEach(function(this) {
     this.server = new Pretender();
   });
 
-  hooks.afterEach(function(this: TestContext) {
+  // @ts-ignore
+  hooks.afterEach(function(this) {
     this.server.shutdown();
   });
-}
-
-declare module 'ember-test-helpers' {
-  interface TestContext {
-    server: Pretender;
-  }
 }

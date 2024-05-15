@@ -1,4 +1,4 @@
-import { click, visit } from '@ember/test-helpers';
+import { click, settled, visit } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import setupPretender from '../helpers/setup-pretender';
@@ -11,30 +11,34 @@ module('Acceptance | index2', hooks => {
     await visit('/');
     assert.expect(8);
 
+    // @ts-ignore
     this.server.put('/fruits/:id/doRipen', (request) => {
       const data = JSON.parse(request.requestBody);
       assert.deepEqual(data, { id: '1', name: 'apple' }, 'member action - request payload is correct');
       assert.equal(request.params.id, '1', 'request made to the right URL');
-      return [200, {}, '{"status": "ok"}'];
+      return [200, {"Content-Type": "application/json"}, '{"status": "ok"}'];
     });
 
+    // @ts-ignore
     this.server.put('/fruits/ripenEverything', (request) => {
       const data = JSON.parse(request.requestBody);
       assert.deepEqual(data, { test: 'ok' }, 'collection action - request payload is correct');
       assert.ok(true, 'request was made to "ripenEverything"');
-      return [200, {}, '{"status": "ok"}'];
+      return [200, {"Content-Type": "application/json"}, '{"status": "ok"}'];
     });
 
+    // @ts-ignore
     this.server.get('/fruits/:id/info', (request) => {
       assert.equal(request.params.id, '1', 'request made to the right URL');
       assert.equal(request.queryParams.fruitId, '1', 'request made with the right query params');
-      return [200, {}, '{"status": "ok"}'];
+      return [200, {"Content-Type": "application/json"}, '{"status": "ok"}'];
     });
 
+    // @ts-ignore
     this.server.get('/fruits/fresh', (request) => {
       assert.equal(request.queryParams.month, 'July', 'request made with the right query params');
       assert.ok(true, 'request was made to "ripenEverything"');
-      return [200, {}, '{"status": "ok"}'];
+      return [200, {"Content-Type": "application/json"}, '{"status": "ok"}'];
     });
 
     await click('#apple .ripen-instance-button');
@@ -75,7 +79,8 @@ module('Acceptance | index2', hooks => {
           }
         }
       };
-      return [200, {}, JSON.stringify(response)];
+
+      return [200, {"Content-Type": "application/json"}, JSON.stringify(response)];
     });
 
     this.server.put('/fruits/doEatAll', (request) => {
@@ -90,7 +95,6 @@ module('Acceptance | index2', hooks => {
           }
         }
       };
-
       assert.deepEqual(data, expectedData, 'collection action - request payload run through serialize function');
 
       const response = {
@@ -105,16 +109,18 @@ module('Acceptance | index2', hooks => {
           }
         ]
       };
-      return [200, {}, JSON.stringify(response)];
+      return [200, {"Content-Type": "application/json"}, JSON.stringify(response)];
     });
 
     (assert as any).dom(`[data-test-fruit-name="apple"]`).exists();
 
     await click('#apple .eat-instance-button');
+    await settled();
 
     (assert as any).dom(`[data-test-fruit-name="Eaten apple"]`).exists();
 
     await click('.all-fruit .eat-all-button');
+    await settled();
 
     (assert as any).dom(`[data-test-fruit-name="Completely Eaten apple"]`).exists();
   });

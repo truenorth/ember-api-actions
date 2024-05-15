@@ -21,14 +21,13 @@
   "scripts": {
     "build": "ember build",
     "lint": "npm run lint:ts && npm run lint:hbs",
-    "lint:ts": "tslint --project .",
     "lint:hbs": "ember-template-lint .",
-    "start": "ember server",
-    "test": "ember test",
-    "semantic-release": "semantic-release",
+    "lint:ts": "tslint --project .",
+    "prepare": "husky install",
     "prepublishOnly": "ember ts:precompile",
     "postpublish": "ember ts:clean",
-    "prepare": "husky install"
+    "start": "ember server",
+    "test": "ember test"
   },
   "commitlint": {
     "extends": [
@@ -43,24 +42,27 @@
     "@commitlint/cli": "8.3.6",
     "@commitlint/config-conventional": "8.3.6",
     "@commitlint/travis-cli": "8.3.6",
-    "@ember/optional-features": "2.0.0",
+    "@ember/optional-features": "^1.3.0",
     "@ember/test-helpers": "2.5.0",
+    "@glimmer/component": "^1.0.0",
+    "@glimmer/tracking": "^1.0.0",
     "@mike-north/js-lib-renovate-config": "1.3.1",
     "@mike-north/js-lib-semantic-release-config": "1.0.1",
     "@types/ember": "3.16.14",
+    "@types/ember__test-helpers": "1.7.6",
     "@types/ember-data": "3.16.25",
     "@types/ember-qunit": "3.4.15",
-    "@types/ember__test-helpers": "1.7.6",
+    "@types/ember-test-helpers": "^1.0.16",
     "@types/qunit": "2.11.3",
     "@types/rsvp": "4.0.9",
     "broccoli-asset-rev": "3.0.0",
+    "ember-auto-import": "^2.7.2",
     "ember-cli": "4.11.0",
     "ember-cli-code-coverage": "1.0.3",
     "ember-cli-dependency-checker": "3.3.2",
     "ember-cli-github-pages": "0.2.2",
     "ember-cli-htmlbars": "6.2.0",
     "ember-cli-inject-live-reload": "2.1.0",
-    "ember-cli-pretender": "4.0.0",
     "ember-cli-test-loader": "3.0.0",
     "ember-cli-tslint": "0.1.4",
     "ember-cli-typescript-blueprints": "3.0.0",
@@ -81,6 +83,7 @@
     "json-typescript": "1.1.2",
     "jsonapi-typescript": "0.1.3",
     "loader.js": "4.7.0",
+    "pretender": "^3.4.7",
     "qunit": "2.16.0",
     "qunit-dom": "2.0.0",
     "semantic-release": "17.4.3",
@@ -90,12 +93,12 @@
   "engines": {
     "node": "10.* || >= 12.*"
   },
+  "ember": {
+    "edition": "octane"
+  },
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "demoURL": "https://mike.works/ember-api-actions"
-  },
-  "release": {
-    "extends": "@mike-north/js-lib-semantic-release-config"
   },
   "engine": {
     "node": "20.13.1"

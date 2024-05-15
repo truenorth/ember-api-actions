@@ -1,4 +1,4 @@
-import memberAction from 'ember-api-actions/utils/member-action';
+import memberAction from '@1024pix/ember-api-actions/utils/member-action';
 import { module, test } from 'qunit';
 
 module('Unit | Utility | member action', () => {
