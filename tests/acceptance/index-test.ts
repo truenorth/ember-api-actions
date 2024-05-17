@@ -54,6 +54,7 @@ module('Acceptance | index2', hooks => {
     await visit('/');
     assert.expect(6);
 
+    // @ts-ignore
     this.server.put('/fruits/:id/doEat', (request) => {
       const data = JSON.parse(request.requestBody);
 
@@ -83,6 +84,7 @@ module('Acceptance | index2', hooks => {
       return [200, {"Content-Type": "application/json"}, JSON.stringify(response)];
     });
 
+    // @ts-ignore
     this.server.put('/fruits/doEatAll', (request) => {
       const data = JSON.parse(request.requestBody);
 

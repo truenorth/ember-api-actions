@@ -1,3 +1,4 @@
+// @ts-ignore
 import memberAction from '@1024pix/ember-api-actions/utils/member-action';
 import { module, test } from 'qunit';
 

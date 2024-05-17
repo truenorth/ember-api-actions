@@ -6,6 +6,7 @@ const { HTMLBars } = Ember as any;
 
 export function firstInArray(params: any[] /* , hash*/) {
   if (isArray(params[0])) {
+    // @ts-ignore
     return params[0].objectAt(0) || undefined;
   } else {
     return undefined;

@@ -1,3 +1,4 @@
+// @ts-ignore
 import collectionAction from '@1024pix/ember-api-actions/utils/collection-action';
 import { module, test } from 'qunit';
 
