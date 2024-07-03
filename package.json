@@ -87,7 +87,7 @@
     "typescript": "4.2.4"
   },
   "engines": {
-    "node": "10.* || >= 12.*"
+    "node": "16.* || >= 18.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config",
@@ -97,7 +97,7 @@
     "extends": "@mike-north/js-lib-semantic-release-config"
   },
   "volta": {
-    "node": "12.22.2",
+    "node": "18.17.1",
     "yarn": "1.22.10"
   }
 }
