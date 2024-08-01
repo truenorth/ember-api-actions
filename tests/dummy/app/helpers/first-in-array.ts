@@ -1,23 +1,8 @@
+import { helper } from '@ember/component/helper';
 import { isArray } from '@ember/array';
-import Helper from '@ember/component/helper';
-import Ember from 'ember';
 
-const { HTMLBars } = Ember as any;
-
-export function firstInArray(params: any[] /* , hash*/) {
-  if (isArray(params[0])) {
-    return params[0].objectAt(0) || undefined;
-  } else {
-    return undefined;
-  }
+function firstInArray([array]) {
+  return isArray(array) ? array[0] : undefined;
 }
 
-let forExport = null;
-
-if (Helper) {
-  forExport = Helper.helper(firstInArray);
-} else if (HTMLBars.makeBoundHelper) {
-  forExport = HTMLBars.makeBoundHelper(firstInArray);
-}
-
-export default forExport;
+export default helper(firstInArray);
