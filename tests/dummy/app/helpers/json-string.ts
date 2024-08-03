@@ -3,16 +3,10 @@ import Ember from 'ember';
 
 const { HTMLBars } = Ember as any;
 
-export function jsonString(params: any[] /* , hash*/) {
-  return JSON.stringify(params[0]);
+export function jsonString([param]: [any]): string {
+  return JSON.stringify(param);
 }
 
-let forExport = null;
-
-if (Helper) {
-  forExport = Helper.helper(jsonString);
-} else if (HTMLBars.makeBoundHelper) {
-  forExport = HTMLBars.makeBoundHelper(jsonString);
-}
+const forExport = Helper?.helper(jsonString) || HTMLBars?.makeBoundHelper?.(jsonString);
 
 export default forExport;
